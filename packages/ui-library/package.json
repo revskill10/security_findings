@@ -6,14 +6,27 @@
   "module": "dist/esm/index.js",
   "scripts": {
     "build": "rollup -c",
-    "lint": "eslint"
+    "lint": "eslint",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "@storybook/addon-actions": "^6.5.8",
+    "@storybook/addon-essentials": "^6.5.8",
+    "@storybook/addon-interactions": "^6.5.8",
+    "@storybook/addon-links": "^6.5.8",
+    "@storybook/builder-webpack4": "^6.5.8",
+    "@storybook/manager-webpack4": "^6.5.8",
+    "@storybook/react": "^6.5.8",
+    "@storybook/testing-library": "^0.0.11",
+    "babel-loader": "^8.2.5",
     "eslint": "7.32.0",
     "eslint-config-custom": "*",
-    "rollup-plugin-dts": "^4.2.2"
+    "rollup-plugin-dts": "^4.2.2",
+    "semantic-ui-css": "^2.4.1"
   },
   "peerDependencies": {
     "react": "17.0.2",
