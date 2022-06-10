@@ -1,0 +1,170 @@
+components:
+    examples: {}
+    headers: {}
+    parameters: {}
+    requestBodies: {}
+    responses: {}
+    schemas:
+        ItemStatus:
+            type: string
+            enum:
+                - Queued
+            nullable: false
+        Severity:
+            type: string
+            enum:
+                - HIGH
+            nullable: false
+        Finding:
+            properties:
+                metadata:
+                    properties:
+                        severity:
+                            $ref: '#/components/schemas/Severity'
+                        description:
+                            type: string
+                    required:
+                        - severity
+                        - description
+                    type: object
+                location:
+                    properties:
+                        positions:
+                            properties:
+                                begin:
+                                    properties: {line: {type: number, format: double}}
+                                    required: [line]
+                                    type: object
+                            required:
+                                - begin
+                            type: object
+                        path:
+                            type: string
+                    required:
+                        - positions
+                        - path
+                    type: object
+                ruleId:
+                    type: string
+                type:
+                    type: string
+            required:
+                - metadata
+                - location
+                - ruleId
+                - type
+            type: object
+        ItemProps:
+            properties:
+                finishedAt:
+                    type: string
+                scanningAt:
+                    type: string
+                queuedAt:
+                    type: string
+                findings:
+                    items:
+                        $ref: '#/components/schemas/Finding'
+                    type: array
+                repositoryName:
+                    type: string
+                status:
+                    $ref: '#/components/schemas/ItemStatus'
+                id:
+                    type: string
+            required:
+                - finishedAt
+                - scanningAt
+                - queuedAt
+                - findings
+                - repositoryName
+                - status
+                - id
+            type: object
+        ItemCreationParams:
+            properties:
+                finishedAt:
+                    type: string
+                scanningAt:
+                    type: string
+                queuedAt:
+                    type: string
+                findings:
+                    items:
+                        $ref: '#/components/schemas/Finding'
+                    type: array
+                repositoryName:
+                    type: string
+                status:
+                    $ref: '#/components/schemas/ItemStatus'
+            required:
+                - finishedAt
+                - scanningAt
+                - queuedAt
+                - findings
+                - repositoryName
+                - status
+            type: object
+    securitySchemes: {}
+info:
+    title: backend
+    version: 1.0.0
+    license:
+        name: ISC
+    contact: {}
+openapi: 3.0.0
+paths:
+    /api/v1/items:
+        get:
+            operationId: GetItems
+            responses:
+                '200':
+                    description: Ok
+                    content:
+                        application/json:
+                            schema:
+                                properties:
+                                    data: {items: {$ref: '#/components/schemas/ItemProps'}, type: array}
+                                required:
+                                    - data
+                                type: object
+            security: []
+            parameters: []
+        post:
+            operationId: CreateItem
+            responses:
+                '201':
+                    description: Created
+            security: []
+            parameters: []
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/ItemCreationParams'
+    '/api/v1/items/{itemId}':
+        get:
+            operationId: GetItem
+            responses:
+                '200':
+                    description: Ok
+                    content:
+                        application/json:
+                            schema:
+                                properties:
+                                    data: {$ref: '#/components/schemas/ItemProps'}
+                                required:
+                                    - data
+                                type: object
+            security: []
+            parameters:
+                -
+                    in: path
+                    name: itemId
+                    required: true
+                    schema:
+                        type: string
+servers:
+    -
+        url: /

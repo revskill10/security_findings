@@ -4,7 +4,7 @@
   "description": "",
   "main": "build/src/server.js",
   "scripts": {
-    "build": "tsoa routes && tsc --outDir build",
+    "build": "tsoa spec-and-routes && tsc --outDir build",
     "start": "node build/src/server.js"
   },
   "keywords": [],

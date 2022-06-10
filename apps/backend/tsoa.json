@@ -3,8 +3,10 @@
     "noImplicitAdditionalProperties": "throw-on-extras",
     "controllerPathGlobs": ["src/**/*-controller.ts"],
     "spec": {
-      "outputDirectory": "build",
-      "specVersion": 3
+      "outputDirectory": "./docs",
+      "specFileBaseName": "openapi",
+      "specVersion": 3,
+      "yaml": true
     },
     "routes": {
       "routesDir": "build"
