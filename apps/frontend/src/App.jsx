@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Grid, Menu, Segment } from "semantic-ui-react";
-import { Link } from "react-router-dom";
-import { Dashboard } from "ui-library";
+import { Link, Route, Routes } from "react-router-dom";
+import { Dashboard, NewItemForm } from "ui-library";
 const { Item } = Menu;
 export default class MenuExampleTabularOnLeft extends Component {
   state = { activeItem: "bio" };
@@ -26,7 +26,11 @@ export default class MenuExampleTabularOnLeft extends Component {
 
         <Grid.Column stretched width={12}>
           <Segment>
-          <Dashboard itemUrl={(item) => `/details/${item.id}`} />
+          <Routes>
+              <Route path="/dashboard" element={<Dashboard itemUrl={(item) => `/details/${item.id}`} />} />
+              <Route path="/" element={<Dashboard itemUrl={(item) => `/details/${item.id}`} />} />
+              <Route path="/form" element={<NewItemForm />} />
+            </Routes>
           </Segment>
         </Grid.Column>
       </Grid>
