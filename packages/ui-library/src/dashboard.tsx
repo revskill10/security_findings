@@ -27,7 +27,7 @@ export const Dashboard = ({
           <Table.Row key={item.id}>
             <Table.Cell>
                 <Header as="h2" textAlign="center">
-                  {item.id}
+                  <Link to={itemUrl(item)}>{item.id}</Link>
                 </Header>
             </Table.Cell>
             <Table.Cell singleLine>

@@ -16,7 +16,7 @@ export default class MenuExampleTabularOnLeft extends Component {
         <Grid.Column width={4}>
           <Menu.Menu fluid={'fluid'} vertical={'vertical'} tabular={'tabular'}>
             <Menu.Item>
-              <Link to={"/form"}>Form</Link>
+              <Link to={"/form"}>New item</Link>
             </Menu.Item>
             <Menu.Item>
               <Link to={"/dashboard"}>Dashboard</Link>
