@@ -9,6 +9,6 @@
       "yaml": true
     },
     "routes": {
-      "routesDir": "build"
+      "routesDir": "src"
     }
   }

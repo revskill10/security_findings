@@ -9,15 +9,15 @@ import {
 } from "tsoa";
 import { ItemCreationParams, ItemProps } from "../types";
 import items from '../mocks/items';
-@Route("api/v1/items")
+@Route("api/v1")
 export class ItemsController extends Controller {
-    @Get("")
+    @Get("items")
     public async getItems(
     ): Promise<{ data: ItemProps[] }> {
         return { data: items };
     }
 
-    @Get("{itemId}")
+    @Get("items/{itemId}")
     public async getItem(
         @Path() itemId: string,
     ): Promise<{ data: ItemProps }> {
@@ -25,7 +25,7 @@ export class ItemsController extends Controller {
     }
 
     @SuccessResponse("201", "Created") // Custom success response
-    @Post()
+    @Post("item")
     public async createItem(
         @Body() requestBody: ItemCreationParams
     ): Promise<void> {
