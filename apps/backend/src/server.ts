@@ -1,6 +1,6 @@
 import { createApp } from "./app";
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 (async () => {
   const app = await createApp();

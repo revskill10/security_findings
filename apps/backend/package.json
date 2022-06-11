@@ -4,9 +4,10 @@
   "description": "",
   "main": "build/src/server.js",
   "scripts": {
+    "dev": "tsc-watch --onSuccess \"node -r dotenv/config ./build/src/server.js\"",
     "build": "tsoa spec-and-routes && tsc --outDir build",
     "start": "node build/src/server.js",
-    "test": "cross-env NODE_ENV=test jest --forceExit --verbose --runInBand --collectCoverage=true ./tests/unit",
+    "test:unit": "cross-env NODE_ENV=test jest --forceExit --verbose --runInBand --collectCoverage=true ./tests/unit",
     "test-integration": "cross-env NODE_ENV=test jest --forceExit --verbose --runInBand --collectCoverage=true ./tests/integration"
   },
   "keywords": [],
@@ -24,9 +25,12 @@
     "prettier": "2.3.0",
     "supertest": "^6.1.6",
     "ts-jest": "^26.5.0",
+    "ts-node": "^10.8.1",
+    "tsc-watch": "^5.0.3",
     "typescript": "^4.7.3"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.1",
     "tsoa": "^4.1.0"
   }
