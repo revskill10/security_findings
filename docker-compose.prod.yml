@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  backend:
+    restart: always
+    build:
+      dockerfile: apps/backend/Dockerfile.prod
+      context: .
+  nginx:
+    restart: always
+    build:
+      dockerfile: nginx/Dockerfile.prod
+      context: .
+    ports:
+      - "3050:80"
