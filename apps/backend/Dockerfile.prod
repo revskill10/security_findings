@@ -1,9 +1,13 @@
-FROM node:16-alpine as build
+FROM node:16-alpine as backend_build
 RUN apk add git
 WORKDIR /app
 COPY . .
 RUN npm i --only-production
 RUN npm run build:backend
 # production environment
+FROM node:16-alpine
+WORKDIR /usr
+COPY --from=backend_build /app/node_modules ./node_modules
+COPY --from=backend_build /app/apps/backend ./backend
 EXPOSE 3001
-CMD ["node", "/app/apps/backend/build/src/server.js"]
+CMD ["node", "/usr/backend/build/src/server.js"]
