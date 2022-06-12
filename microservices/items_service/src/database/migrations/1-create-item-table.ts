@@ -3,11 +3,11 @@ import { Knex } from "knex";
 export async function up(knex: Knex): Promise<void> {
   await knex.schema.createTable("items", (table) => {
     table.increments("id").primary();
-    table.string("repositoryName").notNullable();
+    table.string("repository_name").notNullable();
     table.string("status").notNullable();
-    table.date("queuedAt").notNullable();
-    table.date("scanningAt").notNullable();
-    table.date("finishedAt").notNullable();
+    table.date("queued_at").notNullable();
+    table.date("scanning_at").nullable();
+    table.date("finished_at").nullable();
   });
 }
 

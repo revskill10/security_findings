@@ -73,8 +73,6 @@ components:
                 id:
                     type: string
             required:
-                - finishedAt
-                - scanningAt
                 - queuedAt
                 - findings
                 - repositoryName
@@ -83,10 +81,6 @@ components:
             type: object
         ItemCreationParams:
             properties:
-                finishedAt:
-                    type: string
-                scanningAt:
-                    type: string
                 queuedAt:
                     type: string
                 findings:
@@ -98,8 +92,6 @@ components:
                 status:
                     $ref: '#/components/schemas/ItemStatus'
             required:
-                - finishedAt
-                - scanningAt
                 - queuedAt
                 - findings
                 - repositoryName

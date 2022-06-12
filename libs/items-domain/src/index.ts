@@ -28,8 +28,8 @@ export type ItemProps = {
   repositoryName: string;
   findings: Array<Finding>;
   queuedAt: string;
-  scanningAt: string;
-  finishedAt: string;
+  scanningAt?: string;
+  finishedAt?: string;
 }
 
 export type ItemCreationParams = {
@@ -37,6 +37,4 @@ export type ItemCreationParams = {
   repositoryName: string;
   findings: Array<Finding>;
   queuedAt: string;
-  scanningAt: string;
-  finishedAt: string;
 }

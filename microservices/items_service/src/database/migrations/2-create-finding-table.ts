@@ -8,8 +8,8 @@ export async function up(knex: Knex): Promise<void> {
         .references("id")
         .inTable("items")
         .onDelete("CASCADE");
-    table.string("findingType").notNullable();
-    table.date("ruleId").notNullable();
+    table.string("finding_type").notNullable();
+    table.string("rule_id").notNullable();
     table.jsonb("location").notNullable();
     table.jsonb("metadata").notNullable();
   });

@@ -1,5 +1,13 @@
 version: '3.8'
 services:
+  database_prod:
+    env_file:
+      - .env.production.local
+    image: "postgres:14"
+    ports:
+      - "5432:5432"
+    volumes:
+      - database-data:/var/lib/postgresql/data/
   gateway:
     restart: always
     build:
@@ -8,11 +16,18 @@ services:
     depends_on:
       - items_service
   items_service:
+    env_file:
+      - .env.production.local
     restart: always
     build:
       dockerfile: microservices/items_service/Dockerfile.prod
       context: .
       target: api_server
+    depends_on:
+      - database_prod
+    environment:
+      DATABASE_URL: ${ITEMS_SERVICE_DATABASE_URL}
+  
   nginx:
     restart: always
     build:
@@ -22,3 +37,6 @@ services:
       - gateway
     ports:
       - "3050:80"
+
+volumes:
+  database-data:

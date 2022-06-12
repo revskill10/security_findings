@@ -1,7 +1,11 @@
 {
     "rules": [{
-        "path": "/api/v1/items",
+        "path": "/api/v1/items/:id",
         "methods": ["get"],
+        "url": "http://host.docker.internal:3001"
+    }, {
+        "path": "/api/v1/items",
+        "methods": ["get", "post"],
         "url": "http://host.docker.internal:3001"
     }]
 }

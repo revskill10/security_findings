@@ -29,12 +29,12 @@ const models: TsoaRoute.Models = {
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "ItemProps": {
         "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"finishedAt":{"dataType":"string","required":true},"scanningAt":{"dataType":"string","required":true},"queuedAt":{"dataType":"string","required":true},"findings":{"dataType":"array","array":{"dataType":"refAlias","ref":"Finding"},"required":true},"repositoryName":{"dataType":"string","required":true},"status":{"ref":"ItemStatus","required":true},"id":{"dataType":"string","required":true}},"validators":{}},
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"finishedAt":{"dataType":"string"},"scanningAt":{"dataType":"string"},"queuedAt":{"dataType":"string","required":true},"findings":{"dataType":"array","array":{"dataType":"refAlias","ref":"Finding"},"required":true},"repositoryName":{"dataType":"string","required":true},"status":{"ref":"ItemStatus","required":true},"id":{"dataType":"string","required":true}},"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "ItemCreationParams": {
         "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"finishedAt":{"dataType":"string","required":true},"scanningAt":{"dataType":"string","required":true},"queuedAt":{"dataType":"string","required":true},"findings":{"dataType":"array","array":{"dataType":"refAlias","ref":"Finding"},"required":true},"repositoryName":{"dataType":"string","required":true},"status":{"ref":"ItemStatus","required":true}},"validators":{}},
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"queuedAt":{"dataType":"string","required":true},"findings":{"dataType":"array","array":{"dataType":"refAlias","ref":"Finding"},"required":true},"repositoryName":{"dataType":"string","required":true},"status":{"ref":"ItemStatus","required":true}},"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 };
