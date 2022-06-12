@@ -6,11 +6,11 @@ services:
       dockerfile: gateway/Dockerfile.prod
       context: .
     depends_on:
-      - backend
-  backend:
+      - items_service
+  items_service:
     restart: always
     build:
-      dockerfile: apps/backend/Dockerfile.prod
+      dockerfile: microservices/items_service/Dockerfile.prod
       context: .
   nginx:
     restart: always

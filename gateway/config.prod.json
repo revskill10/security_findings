@@ -3,7 +3,7 @@
       {
         "path": "/api/v1/items",
         "methods": ["get"],
-        "url": "http://backend:3001"
+        "url": "http://items_service:3001"
       }
     ]
   }

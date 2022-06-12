@@ -1,0 +1,13 @@
+FROM node:16-alpine as items_service_build
+RUN apk add git
+WORKDIR /app
+COPY . .
+RUN npm i --only-production
+RUN npm run build --filter=items_service
+# production environment
+FROM node:16-alpine
+WORKDIR /usr
+COPY --from=items_service_build /app/node_modules ./node_modules
+COPY --from=items_service_build /app/microservices/items_service ./items_service
+EXPOSE 3001
+CMD ["node", "/usr/items_service/build/src/server.js"]

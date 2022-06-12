@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:prod": "microservice-proxy -c config.prod.json -p 9000"
+    "start:prod": "microservice-proxy -c config.prod.json -p 9000",
+    "start:dev": "microservice-proxy -c config.json -p 9000"
+
   },
   "keywords": [],
   "author": "",

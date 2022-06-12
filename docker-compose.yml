@@ -1,9 +1,16 @@
 version: '3.8'
 services:
-  nginx:
+  gateway_dev:
     restart: always
     build:
-      dockerfile: Dockerfile
-      context: ./nginx
+      dockerfile: gateway/Dockerfile
+      context: .
+  nginx_dev:
+    restart: always
+    build:
+      dockerfile: nginx/Dockerfile
+      context: .
+    depends_on:
+      - gateway_dev
     ports:
       - "3050:80"
