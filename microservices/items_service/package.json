@@ -8,14 +8,19 @@
     "build": "tsoa spec-and-routes && tsc --outDir build",
     "start": "node build/src/server.js",
     "test:unit": "cross-env NODE_ENV=test jest --forceExit --verbose --runInBand --collectCoverage=true ./tests/unit",
-    "test-integration": "cross-env NODE_ENV=test jest --forceExit --verbose --runInBand --collectCoverage=true ./tests/integration"
+    "test-integration": "cross-env NODE_ENV=test jest --forceExit --verbose --runInBand --collectCoverage=true ./tests/integration",
+    "db:migrate": "npx knex --knexfile ./src/database/knexfile.ts migrate:latest",
+    "db:seed": "npx knex --knexfile ./src/database/knexfile.ts seed:run",
+    "db:reset": "npm run db:wipe && npm run db:migrate && npm run db:seed"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/express": "^4.17.13",
+    "@types/module-alias": "^2.0.1",
     "@types/node": "^17.0.41",
+    "@types/pg": "^8.6.5",
     "@types/supertest": "^2.0.12",
     "cross-env": "^7.0.3",
     "husky": "^6.0.0",
@@ -32,7 +37,10 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.1",
-    "tsoa": "^4.1.0",
-    "items-domain": "0.1.0"
+    "items-domain": "0.1.0",
+    "knex": "^2.1.0",
+    "module-alias": "^2.2.2",
+    "pg": "^8.7.3",
+    "tsoa": "^4.1.0"
   }
 }

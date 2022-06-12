@@ -1,3 +1,4 @@
+import './module-alias';
 import { createApp } from "./app";
 
 const port = process.env.PORT || 3001;

@@ -12,6 +12,7 @@ services:
     build:
       dockerfile: microservices/items_service/Dockerfile.prod
       context: .
+      target: api_server
   nginx:
     restart: always
     build:
