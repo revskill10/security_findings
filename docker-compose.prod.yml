@@ -1,5 +1,12 @@
 version: '3.8'
 services:
+  gateway:
+    restart: always
+    build:
+      dockerfile: gateway/Dockerfile.prod
+      context: .
+    depends_on:
+      - backend
   backend:
     restart: always
     build:
@@ -10,5 +17,7 @@ services:
     build:
       dockerfile: nginx/Dockerfile.prod
       context: .
+    depends_on:
+      - gateway
     ports:
       - "3050:80"

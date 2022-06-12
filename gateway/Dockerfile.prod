@@ -1,0 +1,6 @@
+FROM node:16-alpine as gateway_build
+WORKDIR /app
+COPY ./gateway .
+RUN npm i
+EXPOSE 9000
+CMD ["npm", "run", "start:prod"]
