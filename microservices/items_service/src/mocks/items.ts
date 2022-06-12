@@ -1,4 +1,4 @@
-import { ItemProps } from "../types"
+import { ItemProps } from "items-domain"
 
 const items: Array<ItemProps> = [
     {

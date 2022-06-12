@@ -107,7 +107,7 @@ components:
             type: object
     securitySchemes: {}
 info:
-    title: backend
+    title: items-service
     version: 1.0.0
     license:
         name: ISC

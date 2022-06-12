@@ -5,6 +5,7 @@
   "workspaces": [
     "frontends/*",
     "microservices/*",
+    "libs/*",
     "packages/*"
   ],
   "scripts": {
@@ -12,7 +13,8 @@
     "dev": "turbo run dev --parallel --no-cache",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "test": "turbo run test --parallel"
+    "test": "turbo run test --parallel",
+    "docker:build-production": "docker compose -f docker-compose.prod.yml build"
   },
   "devDependencies": {
     "prettier": "latest",

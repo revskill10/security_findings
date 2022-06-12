@@ -7,7 +7,7 @@ import {
     Route,
     SuccessResponse,
 } from "tsoa";
-import { ItemCreationParams, ItemProps } from "../types";
+import type { ItemCreationParams, ItemProps } from "items-domain";
 import items from '../mocks/items';
 @Route("api/v1")
 export class ItemsController extends Controller {
