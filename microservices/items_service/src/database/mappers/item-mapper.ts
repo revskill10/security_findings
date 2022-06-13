@@ -3,7 +3,7 @@ import { Item } from "../models/item";
 import { modelToDomain as findingMapper, domainToModel as findingDomainToModel } from './finding-mapper';
 export function modelToDomain(model: Item): ItemProps {
     return {
-        id: String(model.id),
+        id: model.id,
         repositoryName: model.repository_name,
         status: model.status as ItemStatus,
         findings: model.findings?.map(findingMapper) || [],
@@ -15,7 +15,7 @@ export function modelToDomain(model: Item): ItemProps {
 
 export function domainToModel(domain: ItemProps): Item {
     return Item.fromJson({
-        id: Number(domain.id),
+        id: domain.id,
         repository_name: domain.repositoryName,
         status: domain.status,
         queued_at: new Date(domain.queuedAt),

@@ -6,7 +6,4 @@
  */
 import type { PickItemPropsExcludeKeyofItemPropsIdOrFindings } from './pickItemPropsExcludeKeyofItemPropsIdOrFindings';
 
-/**
- * Construct a type with the properties of T except for those in type K.
- */
 export type OmitItemPropsIdOrFindings = PickItemPropsExcludeKeyofItemPropsIdOrFindings;

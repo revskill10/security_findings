@@ -4,14 +4,14 @@
  * items-service
  * OpenAPI spec version: 1.0.0
  */
-import type { MetadataProps } from './metadataProps';
 import type { LocationProps } from './locationProps';
+import type { MetadataProps } from './metadataProps';
 
 export interface FindingProps {
-  metadata: MetadataProps;
-  location: LocationProps;
-  ruleId: string;
+  id: number;
+  itemId: number;
   type: string;
-  itemId: string;
-  id: string;
+  ruleId: string;
+  location: LocationProps;
+  metadata: MetadataProps;
 }

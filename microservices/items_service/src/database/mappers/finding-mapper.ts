@@ -3,8 +3,8 @@ import { Finding } from "../models/finding";
 
 export function modelToDomain(model: Finding): FindingProps {
     return {
-        id: String(model.id),
-        itemId: String(model.item_id),
+        id: model.id,
+        itemId: model.item_id,
         type: model.finding_type,
         location: model.location,
         metadata: model.metadata,
@@ -14,7 +14,7 @@ export function modelToDomain(model: Finding): FindingProps {
 
 export function domainToModel(domain: FindingProps): Finding {
     return Finding.fromJson({
-        id: Number(domain.id),
+        id: domain.id,
         finding_type: domain.type,
         location: domain.location,
         metadata: domain.metadata,

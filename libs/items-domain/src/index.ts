@@ -19,16 +19,16 @@ export type MetadataProps = {
   description: string;
   severity: Severity;
 }
-export type FindingProps = {
-  id: string;
-  itemId: string;
+export interface FindingProps {
+  id: number;
+  itemId: number;
   type: string;
   ruleId: string;
   location: LocationProps;
   metadata: MetadataProps;
 }
-export type ItemProps = {
-  id: string;
+export interface ItemProps {
+  id: number;
   status: ItemStatus;
   repositoryName: string;
   findings: Array<FindingProps>;
@@ -36,8 +36,3 @@ export type ItemProps = {
   scanningAt?: string;
   finishedAt?: string;
 }
-
-export type FindingCreationParams = Omit<FindingProps, 'id'>;
-export type ItemCreationParams = Omit<ItemProps, 'id' | 'findings'> & {
-  findings?: FindingCreationParams[]
-};

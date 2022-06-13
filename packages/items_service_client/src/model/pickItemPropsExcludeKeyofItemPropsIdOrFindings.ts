@@ -4,15 +4,8 @@
  * items-service
  * OpenAPI spec version: 1.0.0
  */
-import type { ItemStatus } from './itemStatus';
 
 /**
  * From T, pick a set of properties whose keys are in the union K
  */
-export interface PickItemPropsExcludeKeyofItemPropsIdOrFindings {
-  status: ItemStatus;
-  repositoryName: string;
-  queuedAt: string;
-  scanningAt?: string;
-  finishedAt?: string;
-}
+export interface PickItemPropsExcludeKeyofItemPropsIdOrFindings { [key: string]: any }

@@ -4,6 +4,6 @@
  * items-service
  * OpenAPI spec version: 1.0.0
  */
-import type { OmitFindingPropsId } from './omitFindingPropsId';
+import type { PartialByFindingPropsId } from './partialByFindingPropsId';
 
-export type FindingCreationParams = OmitFindingPropsId;
+export type FindingCreationParams = PartialByFindingPropsId;

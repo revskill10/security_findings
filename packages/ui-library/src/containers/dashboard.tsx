@@ -17,7 +17,7 @@ const DashboardContainer = ({ itemUrl }: DashboardContainerProps) => {
 
     if (!items) return null;
     const renderElement = (item: ItemProps) => (
-        <Link to={itemUrl(item.id)}>{item.id}</Link>
+        <Link to={itemUrl(String(item.id))}>{item.id}</Link>
     )
     return (
         <Dashboard renderElement={renderElement} data={items}  />

@@ -20,3 +20,7 @@ export * from './createItem201';
 export * from './findingProps';
 export * from './omitFindingPropsId';
 export * from './pickFindingPropsExcludeKeyofFindingPropsId';
+export * from './partialPickItemPropsIdOrFindings';
+export * from './partialByItemPropsIdOrFindings';
+export * from './partialByFindingPropsId';
+export * from './partialPickFindingPropsId';

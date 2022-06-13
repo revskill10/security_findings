@@ -7,7 +7,8 @@ import {
     Route,
     SuccessResponse,
 } from "tsoa";
-import type { ItemCreationParams, ItemProps } from "items-domain";
+import type { ItemProps } from "items-domain";
+import type { ItemCreationParams } from './mappers';
 import { Item } from "src/database/models/item";
 import { modelToDomain } from "src/database/mappers/item-mapper";
 import { transaction } from 'objection';
@@ -41,9 +42,10 @@ export class ItemsController extends Controller {
         @Body() requestBody: ItemCreationParams
     ): Promise<{ data: ItemProps }> {
         const dbResult = await transaction(Item, async (Item) => {
-            const newItem = await Item.query().insertGraphAndFetch(requestBody);
+            const newItem = await Item.query().upsertGraphAndFetch(requestBody);
             return newItem;
         });
+        
         const data = modelToDomain(dbResult);
         this.setStatus(201); // set return status 201
         return { data };

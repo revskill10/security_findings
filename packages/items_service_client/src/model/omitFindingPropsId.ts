@@ -6,7 +6,4 @@
  */
 import type { PickFindingPropsExcludeKeyofFindingPropsId } from './pickFindingPropsExcludeKeyofFindingPropsId';
 
-/**
- * Construct a type with the properties of T except for those in type K.
- */
 export type OmitFindingPropsId = PickFindingPropsExcludeKeyofFindingPropsId;
