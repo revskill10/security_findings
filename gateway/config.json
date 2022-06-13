@@ -5,7 +5,11 @@
         "url": "http://host.docker.internal:3001"
     }, {
         "path": "/api/v1/items",
-        "methods": ["get", "post"],
+        "methods": ["get"],
+        "url": "http://host.docker.internal:3001"
+    }, {
+        "path": "/api/v1/item",
+        "methods": ["post"],
         "url": "http://host.docker.internal:3001"
     }]
 }

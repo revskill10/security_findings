@@ -4,7 +4,7 @@
  * items-service
  * OpenAPI spec version: 1.0.0
  */
-import type { PartialByItemPropsIdOrFindings } from './partialByItemPropsIdOrFindings';
+import type { PickOmitItemPropsFindingsRepositoryNameOrStatusOrQueuedAtOrScanningAtOrFinishedAt } from './pickOmitItemPropsFindingsRepositoryNameOrStatusOrQueuedAtOrScanningAtOrFinishedAt';
 import type { ItemCreationParamsAllOf } from './itemCreationParamsAllOf';
 
-export type ItemCreationParams = PartialByItemPropsIdOrFindings & ItemCreationParamsAllOf;
+export type ItemCreationParams = PickOmitItemPropsFindingsRepositoryNameOrStatusOrQueuedAtOrScanningAtOrFinishedAt & ItemCreationParamsAllOf;

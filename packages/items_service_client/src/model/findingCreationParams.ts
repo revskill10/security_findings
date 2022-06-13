@@ -4,6 +4,6 @@
  * items-service
  * OpenAPI spec version: 1.0.0
  */
-import type { PartialByFindingPropsId } from './partialByFindingPropsId';
+import type { PickFindingPropsRuleIdOrTypeOrMetadataOrLocation } from './pickFindingPropsRuleIdOrTypeOrMetadataOrLocation';
 
-export type FindingCreationParams = PartialByFindingPropsId;
+export type FindingCreationParams = PickFindingPropsRuleIdOrTypeOrMetadataOrLocation;

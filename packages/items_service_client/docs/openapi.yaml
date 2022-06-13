@@ -98,44 +98,47 @@ components:
                 - queuedAt
             type: object
             additionalProperties: false
-        Pick_ItemProps.Exclude_keyofItemProps.id-or-findings__:
-            properties: {}
+        Pick_Omit_ItemProps.findings_.repositoryName-or-status-or-queuedAt-or-scanningAt-or-finishedAt_:
+            properties:
+                status:
+                    $ref: '#/components/schemas/ItemStatus'
+                repositoryName:
+                    type: string
+                queuedAt:
+                    type: string
+                scanningAt:
+                    type: string
+                finishedAt:
+                    type: string
+            required:
+                - status
+                - repositoryName
+                - queuedAt
             type: object
             description: 'From T, pick a set of properties whose keys are in the union K'
-        Omit_ItemProps.id-or-findings_:
-            $ref: '#/components/schemas/Pick_ItemProps.Exclude_keyofItemProps.id-or-findings__'
-        Partial_Pick_ItemProps.id-or-findings__:
-            properties: {}
-            type: object
-            description: 'Make all properties in T optional'
-        PartialBy_ItemProps.id-or-findings_:
-            allOf:
-                -
-                    $ref: '#/components/schemas/Omit_ItemProps.id-or-findings_'
-                -
-                    $ref: '#/components/schemas/Partial_Pick_ItemProps.id-or-findings__'
-        Pick_FindingProps.Exclude_keyofFindingProps.id__:
-            properties: {}
+        Pick_FindingProps.ruleId-or-type-or-metadata-or-location_:
+            properties:
+                ruleId:
+                    type: string
+                type:
+                    type: string
+                metadata:
+                    $ref: '#/components/schemas/MetadataProps'
+                location:
+                    $ref: '#/components/schemas/LocationProps'
+            required:
+                - ruleId
+                - type
+                - metadata
+                - location
             type: object
             description: 'From T, pick a set of properties whose keys are in the union K'
-        Omit_FindingProps.id_:
-            $ref: '#/components/schemas/Pick_FindingProps.Exclude_keyofFindingProps.id__'
-        Partial_Pick_FindingProps.id__:
-            properties: {}
-            type: object
-            description: 'Make all properties in T optional'
-        PartialBy_FindingProps.id_:
-            allOf:
-                -
-                    $ref: '#/components/schemas/Omit_FindingProps.id_'
-                -
-                    $ref: '#/components/schemas/Partial_Pick_FindingProps.id__'
         FindingCreationParams:
-            $ref: '#/components/schemas/PartialBy_FindingProps.id_'
+            $ref: '#/components/schemas/Pick_FindingProps.ruleId-or-type-or-metadata-or-location_'
         ItemCreationParams:
             allOf:
                 -
-                    $ref: '#/components/schemas/PartialBy_ItemProps.id-or-findings_'
+                    $ref: '#/components/schemas/Pick_Omit_ItemProps.findings_.repositoryName-or-status-or-queuedAt-or-scanningAt-or-finishedAt_'
                 -
                     properties:
                         findings:

@@ -59,54 +59,24 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Pick_ItemProps.Exclude_keyofItemProps.id-or-findings__": {
+    "Pick_Omit_ItemProps.findings_.repositoryName-or-status-or-queuedAt-or-scanningAt-or-finishedAt_": {
         "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{},"validators":{}},
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"status":{"ref":"ItemStatus","required":true},"repositoryName":{"dataType":"string","required":true},"queuedAt":{"dataType":"string","required":true},"scanningAt":{"dataType":"string"},"finishedAt":{"dataType":"string"}},"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Omit_ItemProps.id-or-findings_": {
+    "Pick_FindingProps.ruleId-or-type-or-metadata-or-location_": {
         "dataType": "refAlias",
-        "type": {"ref":"Pick_ItemProps.Exclude_keyofItemProps.id-or-findings__","validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Partial_Pick_ItemProps.id-or-findings__": {
-        "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{},"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "PartialBy_ItemProps.id-or-findings_": {
-        "dataType": "refAlias",
-        "type": {"dataType":"intersection","subSchemas":[{"ref":"Omit_ItemProps.id-or-findings_"},{"ref":"Partial_Pick_ItemProps.id-or-findings__"}],"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Pick_FindingProps.Exclude_keyofFindingProps.id__": {
-        "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{},"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Omit_FindingProps.id_": {
-        "dataType": "refAlias",
-        "type": {"ref":"Pick_FindingProps.Exclude_keyofFindingProps.id__","validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Partial_Pick_FindingProps.id__": {
-        "dataType": "refAlias",
-        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{},"validators":{}},
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "PartialBy_FindingProps.id_": {
-        "dataType": "refAlias",
-        "type": {"dataType":"intersection","subSchemas":[{"ref":"Omit_FindingProps.id_"},{"ref":"Partial_Pick_FindingProps.id__"}],"validators":{}},
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"ruleId":{"dataType":"string","required":true},"type":{"dataType":"string","required":true},"metadata":{"ref":"MetadataProps","required":true},"location":{"ref":"LocationProps","required":true}},"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "FindingCreationParams": {
         "dataType": "refAlias",
-        "type": {"ref":"PartialBy_FindingProps.id_","validators":{}},
+        "type": {"ref":"Pick_FindingProps.ruleId-or-type-or-metadata-or-location_","validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "ItemCreationParams": {
         "dataType": "refAlias",
-        "type": {"dataType":"intersection","subSchemas":[{"ref":"PartialBy_ItemProps.id-or-findings_"},{"dataType":"nestedObjectLiteral","nestedProperties":{"findings":{"dataType":"array","array":{"dataType":"refAlias","ref":"FindingCreationParams"}}}}],"validators":{}},
+        "type": {"dataType":"intersection","subSchemas":[{"ref":"Pick_Omit_ItemProps.findings_.repositoryName-or-status-or-queuedAt-or-scanningAt-or-finishedAt_"},{"dataType":"nestedObjectLiteral","nestedProperties":{"findings":{"dataType":"array","array":{"dataType":"refAlias","ref":"FindingCreationParams"}}}}],"validators":{}},
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 };
