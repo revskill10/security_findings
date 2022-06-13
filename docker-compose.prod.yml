@@ -17,7 +17,7 @@ services:
       - items_service
   items_service:
     env_file:
-      - .env.production.local
+      - microservices/items_service/.env.production.local
     restart: always
     build:
       dockerfile: microservices/items_service/Dockerfile.prod
