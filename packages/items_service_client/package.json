@@ -1,0 +1,64 @@
+{
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=16"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "npm run generate && tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why",
+    "generate": "orval --config ./orval.config.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "items_service_client",
+  "author": "Truong Hoang Dung",
+  "module": "dist/items_service_client.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/items_service_client.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/items_service_client.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^7.0.8",
+    "husky": "^8.0.1",
+    "size-limit": "^7.0.8",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.3"
+  },
+  "peerDependencies": {
+    "react-query": "^3.39.1"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "orval": "^6.8.1",
+    "@faker-js/faker": "^7.2.0",
+    "msw": "^0.42.1"
+  }
+}

@@ -3,7 +3,7 @@
     "noImplicitAdditionalProperties": "throw-on-extras",
     "controllerPathGlobs": ["src/**/*-controller.ts"],
     "spec": {
-      "outputDirectory": "./docs",
+      "outputDirectory": "../../packages/items_service_client/docs",
       "specFileBaseName": "openapi",
       "specVersion": 3,
       "yaml": true

@@ -4,6 +4,8 @@ import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
 import { terser } from "rollup-plugin-terser";
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import jsonPlugin from '@rollup/plugin-json';
+import nodePolyfills from 'rollup-plugin-node-polyfills';
 
 const packageJson = require("./package.json");
 
@@ -23,17 +25,25 @@ export default [
             },
         ],
         plugins: [
+            nodePolyfills(),
             peerDepsExternal(),
             resolve(),
             commonjs(),
             typescript({ tsconfig: "./tsconfig.json" }),
             terser(),
+            jsonPlugin()
         ],
         external: ["react", "react-dom", "semantic-ui-react", "react-router-dom"]
     },
     {
         input: "dist/esm/types/index.d.ts",
         output: [{ file: "dist/index.d.ts", format: "esm" }],
-        plugins: [dts()],
+        plugins: [
+            nodePolyfills(),
+            peerDepsExternal(),
+            resolve(),
+            dts(),
+            jsonPlugin()
+        ],
     }
 ];

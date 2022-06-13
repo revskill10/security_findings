@@ -7,10 +7,6 @@
     "lint": {
       "outputs": []
     },
-    "dev:frontend": {
-      "cache": false,
-      "dependsOn": ["ui-library#build"]
-    },
     "test": {
       "dependsOn": ["^test"]
     },

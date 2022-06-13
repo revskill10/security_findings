@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { App } from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import { ReactQueryClientProvider } from './ReactQueryContextProvider';
+ 
 const rootElement = document.getElementById("root");
 const styleLink = document.createElement("link");
 styleLink.rel = "stylesheet";
@@ -11,7 +13,11 @@ styleLink.href =
 document.head.appendChild(styleLink);
 
 ReactDOM.render(
-    <BrowserRouter><App /></BrowserRouter>, rootElement
+    <ReactQueryClientProvider>
+      <BrowserRouter>
+        <App />
+    </BrowserRouter>
+    </ReactQueryClientProvider>, rootElement
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,14 +1,16 @@
 import * as React from "react";
 import { Header, Table } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import data from "./data/mock";
+import defaultData from "./data/mock";
 
 import type { ItemProps } from "./types";
-export interface DashboardProps {
+export type DashboardProps = {
     itemUrl: (item: ItemProps) => string;
+    data: ItemProps[];
 }
 export const Dashboard = ({
-    itemUrl
+    itemUrl,
+    data = defaultData
 }: DashboardProps) => {
   return (
     <Table celled padded>

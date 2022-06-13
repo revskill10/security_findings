@@ -1,3 +1,4 @@
+import { LocationProps, MetadataProps } from 'items-domain';
 import { Model } from 'objection';
 import { Item } from './item';
 
@@ -7,10 +8,11 @@ export class Finding extends Model {
     }
 
     id!: number;
+    item_id!: number;
     finding_type!: string;
     rule_id!: string;
-    location!: any;
-    metadata!: any;
+    location!: LocationProps;
+    metadata!: MetadataProps;
 
   
     static get relationMappings() {

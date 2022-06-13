@@ -10,6 +10,7 @@ import {
 import type { ItemCreationParams, ItemProps } from "items-domain";
 import { Item } from "src/database/models/item";
 import { modelToDomain } from "src/database/mappers/item-mapper";
+import { transaction } from 'objection';
 @Route("api/v1")
 export class ItemsController extends Controller {
     @Get("items")
@@ -38,8 +39,13 @@ export class ItemsController extends Controller {
     @Post("item")
     public async createItem(
         @Body() requestBody: ItemCreationParams
-    ): Promise<void> {
+    ): Promise<{ data: ItemProps }> {
+        const dbResult = await transaction(Item, async (Item) => {
+            const newItem = await Item.query().insertGraphAndFetch(requestBody);
+            return newItem;
+        });
+        const data = modelToDomain(dbResult);
         this.setStatus(201); // set return status 201
-        return;
+        return { data };
     }
 }

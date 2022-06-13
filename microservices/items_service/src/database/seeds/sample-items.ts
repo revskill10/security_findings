@@ -1,6 +1,8 @@
 import { Knex } from "knex";
+import { Finding } from "../models/finding";
+import { Item } from "../models/item";
 
-const items: Array<any> = [
+const items = [
     {
       id: 1,
       status: "Queued",
@@ -41,7 +43,7 @@ const items: Array<any> = [
             severity: "HIGH"
           }
         }
-      ],
+      ].map(json => Finding.fromJson(json)),
       queued_at: "6-8-2022",
       scanning_at: "6-8-2022",
       finished_at: "6-8-2022"
@@ -86,7 +88,7 @@ const items: Array<any> = [
             severity: "HIGH"
           }
         }
-      ],
+      ].map(json => Finding.fromJson(json)),
       queued_at: "6-8-2022",
       scanning_at: "6-8-2022",
       finished_at: "6-8-2022"
@@ -130,19 +132,20 @@ const items: Array<any> = [
             severity: "HIGH"
           }
         }
-      ],
+      ].map(json => Finding.fromJson(json)),
       queued_at: "6-8-2022",
       scanning_at: "6-8-2022",
       finished_at: "6-8-2022"
     }
-];
+].map(json => Item.fromJson(json));
   
 export async function seed(knex: Knex): Promise<void> {
     for(let i = 0; i < items.length; i++) {
         const item = items[i];
         console.log('item', item);
+        if (!item.findings) return;
         // const newItems = await knex("items").insert(item).returning("*");
-        const newFindings = item.findings.map((finding: any) => ({
+        const newFindings = item.findings.map((finding: Finding) => ({
             ...finding,
             item_id: item.id
         }));
