@@ -1,13 +1,9 @@
 import React from "react";
 import { Grid, Menu, Segment } from "semantic-ui-react";
 import { Link, Route, Routes } from "react-router-dom";
-import { DashboardContainer, NewItemForm } from "ui-library";
+import { DashboardContainer, NewItemForm, ItemDetailContainer } from "ui-library";
 
-const { Item } = Menu;
 export const App = () => {
-  const [activeItem, setActiveItem] = React.useState("bio");
-
-  const handleItemClick = (e, { name }) => setActiveItem(name);
 
   return (
     <Grid>
@@ -24,11 +20,11 @@ export const App = () => {
 
       <Grid.Column stretched width={12}>
         <Segment>
-          
         <Routes>
             <Route path="/dashboard" element={<DashboardContainer itemUrl={(itemId) => `/details/${itemId}`} />} />
             <Route path="/" element={<DashboardContainer itemUrl={(itemId) => `/details/${itemId}`} />} />
             <Route path="/form" element={<NewItemForm />} />
+            <Route path="/details/:itemId" element={<ItemDetailContainer />} />
           </Routes>
         </Segment>
       </Grid.Column>

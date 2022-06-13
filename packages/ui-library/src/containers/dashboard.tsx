@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dashboard, DashboardProps } from "../components/dashboard";
+import { Dashboard } from "../components/dashboard";
 import { useGetItems } from 'items_service_client';
 import { QueryClientProvider } from "react-query";
 import { Link } from 'react-router-dom';
