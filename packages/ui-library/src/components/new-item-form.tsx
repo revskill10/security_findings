@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Button, Form } from "semantic-ui-react";
-import { Finding } from "./types";
-const emptyFinding: Finding = {
+import { FindingProps } from "items_service_client/dist/model";
+const emptyFinding: FindingProps = {
+    id: '',
+    itemId: '',
     ruleId: '',
     type: '',
     location: {
@@ -18,7 +20,7 @@ const emptyFinding: Finding = {
     }
 }
 export const NewItemForm = () => {
-  let [findings, setFindings] = useState<Array<Finding>>([]);
+  let [findings, setFindings] = useState<Array<FindingProps>>([]);
   let [count, setCount] = useState<number>(findings.length);
   const addCount = () => {
     let arr = findings;
@@ -26,7 +28,7 @@ export const NewItemForm = () => {
     setFindings(arr);
     setCount(arr.length + 1);
   };
-  const removeCount = (index: Finding) => {
+  const removeCount = (index: FindingProps) => {
     setFindings(findings.filter((item) => item !== index));
   };
   return (
@@ -85,5 +87,3 @@ export const NewItemForm = () => {
     </Form>
   );
 };
-
-export * from "./types";

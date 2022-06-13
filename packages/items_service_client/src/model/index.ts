@@ -17,3 +17,6 @@ export * from './healthCheck200';
 export * from './getItems200';
 export * from './getItem200';
 export * from './createItem201';
+export * from './findingProps';
+export * from './omitFindingPropsId';
+export * from './pickFindingPropsExcludeKeyofFindingPropsId';

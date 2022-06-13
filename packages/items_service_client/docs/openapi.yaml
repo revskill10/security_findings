@@ -46,7 +46,7 @@ components:
                 - severity
                 - description
             type: object
-        Finding:
+        FindingProps:
             properties:
                 metadata:
                     $ref: '#/components/schemas/MetadataProps'
@@ -78,7 +78,7 @@ components:
                     type: string
                 findings:
                     items:
-                        $ref: '#/components/schemas/Finding'
+                        $ref: '#/components/schemas/FindingProps'
                     type: array
                 repositoryName:
                     type: string
@@ -114,7 +114,7 @@ components:
         Omit_ItemProps.id-or-findings_:
             $ref: '#/components/schemas/Pick_ItemProps.Exclude_keyofItemProps.id-or-findings__'
             description: 'Construct a type with the properties of T except for those in type K.'
-        Pick_Finding.Exclude_keyofFinding.id__:
+        Pick_FindingProps.Exclude_keyofFindingProps.id__:
             properties:
                 itemId:
                     type: string
@@ -134,11 +134,11 @@ components:
                 - metadata
             type: object
             description: 'From T, pick a set of properties whose keys are in the union K'
-        Omit_Finding.id_:
-            $ref: '#/components/schemas/Pick_Finding.Exclude_keyofFinding.id__'
+        Omit_FindingProps.id_:
+            $ref: '#/components/schemas/Pick_FindingProps.Exclude_keyofFindingProps.id__'
             description: 'Construct a type with the properties of T except for those in type K.'
         FindingCreationParams:
-            $ref: '#/components/schemas/Omit_Finding.id_'
+            $ref: '#/components/schemas/Omit_FindingProps.id_'
         ItemCreationParams:
             allOf:
                 -
@@ -149,8 +149,6 @@ components:
                             items:
                                 $ref: '#/components/schemas/FindingCreationParams'
                             type: array
-                    required:
-                        - findings
                     type: object
     securitySchemes: {}
 info:

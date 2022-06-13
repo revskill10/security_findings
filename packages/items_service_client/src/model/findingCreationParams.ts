@@ -4,6 +4,6 @@
  * items-service
  * OpenAPI spec version: 1.0.0
  */
-import type { OmitFindingId } from './omitFindingId';
+import type { OmitFindingPropsId } from './omitFindingPropsId';
 
-export type FindingCreationParams = OmitFindingId;
+export type FindingCreationParams = OmitFindingPropsId;

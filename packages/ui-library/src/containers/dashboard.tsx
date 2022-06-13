@@ -1,26 +1,26 @@
 import React from 'react';
-import { Dashboard, DashboardProps } from "../dashboard";
+import { Dashboard, DashboardProps } from "../components/dashboard";
 import { useGetItems } from 'items_service_client';
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClientProvider } from "react-query";
+import { Link } from 'react-router-dom';
+import { ItemProps } from 'items_service_client/dist/model';
 
-export type DashboardContainerProps = Omit<DashboardProps, 'data'>;
-const removeEmpty = (obj: any) => {
-    let newObj: any = {};
-    Object.keys(obj).forEach((key: string) => {
-      if (obj[key] === Object(obj[key])) newObj[key] = removeEmpty(obj[key]);
-      else if (obj[key] !== undefined) newObj[key] = obj[key];
-    });
-    return newObj;
+export type DashboardContainerProps = {
+    itemUrl: (itemId: string) => string;
 };
+
 const DashboardContainer = ({ itemUrl }: DashboardContainerProps) => {
     const { data, isLoading, isError } = useGetItems();
     if (isLoading) return <div>...</div>;
     if (isError) return <div>Error</div>;
-    const items = data?.data?.data.map(removeEmpty);
+    const items = data?.data?.data;
 
     if (!items) return null;
+    const renderElement = (item: ItemProps) => (
+        <Link to={itemUrl(item.id)}>{item.id}</Link>
+    )
     return (
-        <Dashboard itemUrl={itemUrl} data={items}  />
+        <Dashboard renderElement={renderElement} data={items}  />
     )
 }
 

@@ -1,17 +1,14 @@
 import * as React from "react";
 import { Header, Table } from "semantic-ui-react";
-import { Link } from "react-router-dom";
-import defaultData from "./data/mock";
-
-import type { ItemProps } from "./types";
+import type { ItemProps } from "items_service_client/dist/model";
 export type DashboardProps = {
-    itemUrl: (item: ItemProps) => string;
-    data: ItemProps[];
+  renderElement: (item: ItemProps) => React.ReactElement<any, any>;
+  data: ItemProps[];
 }
-export const Dashboard = ({
-    itemUrl,
-    data = defaultData
-}: DashboardProps) => {
+export const Dashboard: React.FC<DashboardProps> = ({
+  renderElement,
+  data
+}) => {
   return (
     <Table celled padded>
       <Table.Header>
@@ -29,7 +26,7 @@ export const Dashboard = ({
           <Table.Row key={item.id}>
             <Table.Cell>
                 <Header as="h2" textAlign="center">
-                  <Link to={itemUrl(item)}>{item.id}</Link>
+                  {renderElement(item)}
                 </Header>
             </Table.Cell>
             <Table.Cell singleLine>
@@ -53,4 +50,3 @@ export const Dashboard = ({
     </Table>
   );
 };
-export * from "./types";

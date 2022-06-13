@@ -19,7 +19,7 @@ export type MetadataProps = {
   description: string;
   severity: Severity;
 }
-export type Finding = {
+export type FindingProps = {
   id: string;
   itemId: string;
   type: string;
@@ -31,13 +31,13 @@ export type ItemProps = {
   id: string;
   status: ItemStatus;
   repositoryName: string;
-  findings: Array<Finding>;
+  findings: Array<FindingProps>;
   queuedAt: string;
   scanningAt?: string;
   finishedAt?: string;
 }
 
-export type FindingCreationParams = Omit<Finding, 'id'>;
+export type FindingCreationParams = Omit<FindingProps, 'id'>;
 export type ItemCreationParams = Omit<ItemProps, 'id' | 'findings'> & {
-  findings: FindingCreationParams[]
+  findings?: FindingCreationParams[]
 };

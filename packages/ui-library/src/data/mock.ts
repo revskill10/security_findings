@@ -1,4 +1,4 @@
-import { ItemProps } from "../types"
+import { ItemProps } from "items_service_client/dist/model"
 
 const items: Array<ItemProps> = [
     {
@@ -7,6 +7,8 @@ const items: Array<ItemProps> = [
       repositoryName: "RepositoryName 1",
       findings: [
         {
+          id: "1",
+          itemId: "1",
           type: "sast",
           ruleId: "G402",
           location: {
@@ -23,6 +25,8 @@ const items: Array<ItemProps> = [
           }
         },
         {
+          id: "2",
+          itemId: "1",
           type: "sast",
           ruleId: "G404",
           location: {
@@ -50,6 +54,8 @@ const items: Array<ItemProps> = [
       repositoryName: "RepositoryName 2",
       findings: [
         {
+          id: "3",
+          itemId: "2",
           type: "sast",
           ruleId: "G402",
           location: {
@@ -66,6 +72,8 @@ const items: Array<ItemProps> = [
           }
         },
         {
+          id: "4",
+          itemId: "2",
           type: "sast",
           ruleId: "G404",
           location: {
@@ -93,6 +101,8 @@ const items: Array<ItemProps> = [
       repositoryName: "RepositoryName 3",
       findings: [
         {
+          id: "5",
+          itemId: "3",
           type: "sast",
           ruleId: "G402",
           location: {
@@ -109,6 +119,8 @@ const items: Array<ItemProps> = [
           }
         },
         {
+          id: "6",
+          itemId: "3",
           type: "sast",
           ruleId: "G404",
           location: {

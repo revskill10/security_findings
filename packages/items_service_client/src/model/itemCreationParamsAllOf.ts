@@ -7,5 +7,5 @@
 import type { FindingCreationParams } from './findingCreationParams';
 
 export type ItemCreationParamsAllOf = {
-  findings: FindingCreationParams[];
+  findings?: FindingCreationParams[];
 };

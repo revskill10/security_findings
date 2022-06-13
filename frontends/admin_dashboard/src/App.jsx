@@ -2,7 +2,6 @@ import React from "react";
 import { Grid, Menu, Segment } from "semantic-ui-react";
 import { Link, Route, Routes } from "react-router-dom";
 import { DashboardContainer, NewItemForm } from "ui-library";
-import { ReactQueryClientProvider } from './ReactQueryContextProvider';
 
 const { Item } = Menu;
 export const App = () => {
@@ -27,8 +26,8 @@ export const App = () => {
         <Segment>
           
         <Routes>
-            <Route path="/dashboard" element={<ReactQueryClientProvider><DashboardContainer itemUrl={(item) => `/details/${item.id}`} /></ReactQueryClientProvider>} />
-            <Route path="/" element={<ReactQueryClientProvider><DashboardContainer itemUrl={(item) => `/details/${item.id}`} /></ReactQueryClientProvider>} />
+            <Route path="/dashboard" element={<DashboardContainer itemUrl={(itemId) => `/details/${itemId}`} />} />
+            <Route path="/" element={<DashboardContainer itemUrl={(itemId) => `/details/${itemId}`} />} />
             <Route path="/form" element={<NewItemForm />} />
           </Routes>
         </Segment>

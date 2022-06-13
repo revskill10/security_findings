@@ -4,14 +4,14 @@
  * items-service
  * OpenAPI spec version: 1.0.0
  */
-import type { Finding } from './finding';
+import type { FindingProps } from './findingProps';
 import type { ItemStatus } from './itemStatus';
 
 export interface ItemProps {
   finishedAt?: string;
   scanningAt?: string;
   queuedAt: string;
-  findings: Finding[];
+  findings: FindingProps[];
   repositoryName: string;
   status: ItemStatus;
   id: string;

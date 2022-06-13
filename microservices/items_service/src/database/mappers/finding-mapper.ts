@@ -1,4 +1,4 @@
-import type { Finding as FindingProps } from "items-domain";
+import type { FindingProps } from "items-domain";
 import { Finding } from "../models/finding";
 
 export function modelToDomain(model: Finding): FindingProps {
