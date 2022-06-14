@@ -1,20 +1,21 @@
-# Turborepo starter with npm
+# Security Findings
 
-This is an official starter turborepo.
 
 ## What's inside?
 
 This turborepo uses [npm](https://www.npmjs.com/) as a package manager. It includes the following packages/apps:
 
-### Apps and Packages
+### Frontends, Microservices, Libs and Packages
 
-- `docs`: a [Next.js](https://nextjs.org) app
-- `web`: another [Next.js](https://nextjs.org) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
+- `frontends/admin_dashboard`: Contain admin dashboard (App Shell)
+- `gateway`: This is microservice API gateway
+- `libs/items-domain`: This is a library to contain all types/interfaces for Item and Findings domain. 
+- `microservices/items_service`: This is Item microservice which contains all needed operations on Item domain.
+- `packages/items_services_client`: This is the generated react-query hooks for items service. It's used in `packages/ui-library`.
+- `packages/ui-library`: This is main ui library (microfrontend) for Item domain. It's used in admin dashboard.
 - `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
 ### Utilities
 
@@ -26,52 +27,62 @@ This turborepo has some additional tools already setup for you:
 
 ## Setup
 
-This repository is used in the `npx create-turbo@latest` command, and selected when choosing which package manager you wish to use with your monorepo (npm).
+You need to have NodeJS 16, docker and docker compose installed in system.
 
-### Build
-
-To build all apps and packages, run the following command:
+Start with:
 
 ```
-cd my-turborepo
-npm run build
+npm install
+docker compose up -d
 ```
 
 ### Develop
 
 To develop all apps and packages, run the following command:
 
+- Start from the microservices/items_service
+
+Building and generate `docs/openapi.yaml` inside `packages/items_service_client/docs/openapi.yaml`
 ```
-cd my-turborepo
+npm i
+npm run build
+```
+
+Run db migration with 
+
+```
+npm run db:migrate
+```
+
+Then start service in development:
+
+```
 npm run dev
 ```
 
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching (Beta)](https://turborepo.org/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching (Beta) you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+- Then go to `packages/items_service_client` to generate client with command
 
 ```
-cd my-turborepo
-npx turbo login
+npm run generate
 ```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
+Then building the package
 
 ```
-npx turbo link
+npm run build
 ```
 
-## Useful Links
+- After that, you can go to `packages/ui-library` to develop your microfrontend with components and containers
 
-Learn more about the power of Turborepo:
+In this case, we're using `react-router-dom`, `formik` and `react-query` libraries.
 
-- [Pipelines](https://turborepo.org/docs/core-concepts/pipelines)
-- [Caching](https://turborepo.org/docs/core-concepts/caching)
-- [Remote Caching (Beta)](https://turborepo.org/docs/core-concepts/remote-caching)
-- [Scoped Tasks](https://turborepo.org/docs/core-concepts/scopes)
-- [Configuration Options](https://turborepo.org/docs/reference/configuration)
-- [CLI Usage](https://turborepo.org/docs/reference/command-line-reference)
+```
+npm run build
+```
+
+- Finally, you can work in `frontends/admin_dashboard`
+
+```
+npm i
+```
+
+And run `npm run dev` to have it served in `localhost:3051`
