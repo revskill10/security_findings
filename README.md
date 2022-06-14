@@ -76,6 +76,7 @@ npm run build
 In this case, we're using `react-router-dom`, `formik` and `react-query` libraries.
 
 ```
+npm i
 npm run build
 ```
 
