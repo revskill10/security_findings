@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "tsdx watch",
-    "build": "tsdx build",
+    "build": "npm i generate && tsdx build",
     "test": "tsdx test",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
@@ -56,9 +56,10 @@
     "react-query": "^3.39.1"
   },
   "dependencies": {
-    "axios": "^0.27.2",
-    "orval": "^6.8.1",
     "@faker-js/faker": "^7.2.0",
-    "msw": "^0.42.1"
+    "axios": "^0.27.2",
+    "generate": "^0.14.0",
+    "msw": "^0.42.1",
+    "orval": "^6.8.1"
   }
 }
