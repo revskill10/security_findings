@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Menu, Segment } from "semantic-ui-react";
 import { Link, Route, Routes, useLocation } from "react-router-dom";
-import { DashboardContainer, NewItemFormContainer, ItemDetailContainer } from "ui-library";
+import { DashboardContainer, NewItemFormContainer, ItemDetailContainer, SampleTable } from "ui-library";
 
 export const App = () => {
   const path = useLocation();
@@ -15,16 +15,20 @@ export const App = () => {
           <Menu.Item active={['/dashboard', '/'].includes(path?.pathname)}>
             <Link to={"/dashboard"}>Dashboard</Link>
           </Menu.Item>
+          <Menu.Item active={['/sample'].includes(path?.pathname)}>
+            <Link to={"/sample"}>Sample</Link>
+          </Menu.Item>
         </Menu>
       </Grid.Column>
 
       <Grid.Column stretched width={13}>
         <Segment>
-        <Routes>
+          <Routes>
             <Route path="/dashboard" element={<DashboardContainer itemUrl={(itemId) => `/details/${itemId}`} />} />
             <Route path="/" element={<DashboardContainer itemUrl={(itemId) => `/details/${itemId}`} />} />
             <Route path="/form" element={<NewItemFormContainer />} />
             <Route path="/details/:itemId" element={<ItemDetailContainer />} />
+            <Route path="/sample" element={<SampleTable />} />
           </Routes>
         </Segment>
       </Grid.Column>

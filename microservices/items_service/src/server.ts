@@ -1,9 +1,9 @@
 import './module-alias';
 import { createApp } from "./app";
 
-const port = process.env.PORT || 3001;
 
 (async () => {
+  const port = process.env.PORT || 3001;
   const app = await createApp();
   app.listen(port, () =>
     console.log(`Example app listening at http://localhost:${port}`)
