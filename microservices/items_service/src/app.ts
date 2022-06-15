@@ -1,9 +1,13 @@
 import express, { Request, Response, NextFunction } from 'express';
 import { ValidateError } from "tsoa";
 import { RegisterRoutes } from "./routes";
+import cors from 'cors';
 
 export async function createApp() {
   const app = express();
+  app.use(cors({
+    origin: '*'
+  }));
 
   // Use body parser to read sent json payloads
   app.use(
